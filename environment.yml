@@ -1,0 +1,8 @@
+name: lasius_env
+channels:
+ - conda-forge
+ - nodefaults
+dependencies:
+ - conda-forge::python=3.10.0
+ - conda-forge::pip
+ - conda-forge::poetry
