@@ -71,3 +71,36 @@ def download_euroc(work_path: str = os.getcwd()) -> None:
 
         os.chdir("..")
         shutil.rmtree(dir)
+
+
+if __name__ == "__main__":
+
+    work_path = input(
+        "Enter the work path (press Enter for current directory): "
+    ).strip()
+
+    datasets = {
+        "1": ("EuRoC MAV Dataset", download_euroc),
+    }
+
+    print("Select the datasets you want to download:")
+    for key, (name, _) in datasets.items():
+        print(f"  {key}. {name}")
+    print("  all. Download all")
+
+    choices = input("Enter your choices separated by commas (e.g., 1,3): ").split(",")
+
+    if not work_path:
+        work_path = os.getcwd()
+
+    if not os.path.exists(work_path):
+        os.makedirs(work_path)
+
+    if "all" in choices:
+        for _, func in datasets.values():
+            func(work_path)
+    else:
+        for choice in choices:
+            if choice in datasets:
+                _, func = datasets[choice]
+                func(work_path)
