@@ -73,6 +73,138 @@ def download_euroc(work_path: str = os.getcwd()) -> None:
         shutil.rmtree(dir)
 
 
+def download_kitti_ground_truth_poses(work_path: str = os.getcwd()):
+    """Downloads the KITTI odometry dataset ground truth poses into a specified directory.
+
+    Args:
+        work_path: The directory to download and extract the dataset into. Defaults to
+                   the current working directory.
+
+    Bibtex:
+        @article{
+            geiger2013vision,
+            author = {Geiger, Andreas and Lenz, P and Stiller, Christoph and Urtasun, Raquel},
+            year = {2013},
+            month = {09},
+            pages = {1231-1237},
+            title = {Vision meets robotics: the KITTI dataset},
+            volume = {32},
+            journal = {The International Journal of Robotics Research},
+            doi = {10.1177/0278364913491297}
+        }
+    """
+    print("Downloading KITTI Ground Truth Poses...")
+    commands = [
+        "wget https://s3.eu-central-1.amazonaws.com/avg-kitti/data_odometry_poses.zip",
+        "find . -type f -name '*.zip' -exec sh -c 'unzip -n -d \"${1%.*}\" \"$1\"' _ {} \\;",
+        "mv data_odometry_poses/dataset/poses/* .",
+        "rm -r data_odometry_poses/",
+        "rm data_odometry_poses.zip",
+    ]
+    execute_commands(
+        commands, os.path.join(os.path.join(work_path, "KITTI"), "data_odometry_poses")
+    )
+
+
+def download_kitti_calibration(work_path: str = os.getcwd()):
+    """Downloads the KITTI odometry calibration data into a specified directory.
+
+    Args:
+        work_path: The directory to download and extract the dataset into. Defaults to
+                   the current working directory.
+
+    Bibtex:
+        @article{
+            geiger2013vision,
+            author = {Geiger, Andreas and Lenz, P and Stiller, Christoph and Urtasun, Raquel},
+            year = {2013},
+            month = {09},
+            pages = {1231-1237},
+            title = {Vision meets robotics: the KITTI dataset},
+            volume = {32},
+            journal = {The International Journal of Robotics Research},
+            doi = {10.1177/0278364913491297}
+        }
+    """
+    print("Downloading KITTI Ground Odometry Calibration...")
+    commands = [
+        "wget https://s3.eu-central-1.amazonaws.com/avg-kitti/data_odometry_calib.zip",
+        "find . -type f -name '*.zip' -exec sh -c 'unzip -n -d \"${1%.*}\" \"$1\"' _ {} \\;",
+        "mv data_odometry_calib/dataset/sequences/* .",
+        "rm -r data_odometry_calib/",
+        "rm data_odometry_calib.zip",
+    ]
+    execute_commands(
+        commands, os.path.join(os.path.join(work_path, "KITTI"), "data_odometry_calib")
+    )
+
+
+def download_kitti_odometry_gray(work_path: str = os.getcwd()):
+    """Downloads the KITTI odometry dataset (grayscale images) into a specified directory.
+
+    Args:
+        work_path: The directory to download and extract the dataset into. Defaults to
+                   the current working directory.
+
+    Bibtex:
+        @article{
+            geiger2013vision,
+            author = {Geiger, Andreas and Lenz, P and Stiller, Christoph and Urtasun, Raquel},
+            year = {2013},
+            month = {09},
+            pages = {1231-1237},
+            title = {Vision meets robotics: the KITTI dataset},
+            volume = {32},
+            journal = {The International Journal of Robotics Research},
+            doi = {10.1177/0278364913491297}
+        }
+    """
+    print("Downloading KITTI Data Odometry Gray...")
+    commands = [
+        "wget https://s3.eu-central-1.amazonaws.com/avg-kitti/data_odometry_gray.zip",
+        "find . -type f -name '*.zip' -exec sh -c 'unzip -n -d \"${1%.*}\" \"$1\"' _ {} \\;",
+        "find . -type f -name '*.zip' -exec rm {} \\;",
+        "mv data_odometry_gray/dataset/sequences/* .",
+        "rm -r data_odometry_gray/",
+    ]
+    execute_commands(
+        commands, os.path.join(os.path.join(work_path, "KITTI"), "data_odometry_gray")
+    )
+
+
+def download_kitti_odometry_color(work_path: str = os.getcwd()):
+    """Downloads the KITTI odometry dataset (color images) into a specified directory.
+
+    Args:
+        work_path: The directory to download and extract the dataset into. Defaults to
+                   the current working directory.
+
+    Bibtex:
+        @article{
+            geiger2013vision,
+            author = {Geiger, Andreas and Lenz, P and Stiller, Christoph and Urtasun, Raquel},
+            year = {2013},
+            month = {09},
+            pages = {1231-1237},
+            title = {Vision meets robotics: the KITTI dataset},
+            volume = {32},
+            journal = {The International Journal of Robotics Research},
+            doi = {10.1177/0278364913491297}
+        }
+    """
+    print("Downloading KITTI Data Odometry Color...")
+    commands = [
+        "wget https://s3.eu-central-1.amazonaws.com/avg-kitti/data_odometry_color.zip",
+        "find . -type f -name '*.zip' -exec sh -c 'unzip -n -d \"${1%.*}\" \"$1\"' _ {} \\;",
+        "find . -type f -name '*.zip' -exec rm {} \\;",
+        "mv data_odometry_color/dataset/sequences/* .",
+        "rm -r data_odometry_color/",
+    ]
+    execute_commands(
+        commands, os.path.join(os.path.join(work_path, "KITTI"), "data_odometry_color")
+    )
+
+
 if __name__ == "__main__":
 
     work_path = input(
@@ -81,6 +213,10 @@ if __name__ == "__main__":
 
     datasets = {
         "1": ("EuRoC MAV Dataset", download_euroc),
+        "2": ("download_kitti_ground_truth_poses", download_kitti_ground_truth_poses),
+        "3": ("download_kitti_calibration", download_kitti_calibration),
+        "4": ("download_kitti_odometry_gray", download_kitti_odometry_gray),
+        "5": ("download_kitti_odometry_color", download_kitti_odometry_color),
     }
 
     print("Select the datasets you want to download:")
