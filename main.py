@@ -73,7 +73,7 @@ def download_euroc(work_path: str = os.getcwd()) -> None:
         shutil.rmtree(dir)
 
 
-def download_kitti_ground_truth_poses(work_path: str = os.getcwd()):
+def download_kitti_ground_truth_poses(work_path: str = os.getcwd()) -> None:
     """Downloads the KITTI odometry dataset ground truth poses into a specified directory.
 
     Args:
@@ -87,7 +87,7 @@ def download_kitti_ground_truth_poses(work_path: str = os.getcwd()):
             year = {2013},
             month = {09},
             pages = {1231-1237},
-            title = {\href{https://www.researchgate.net/publication/258140919_Vision_meets_robotics_the_KITTI_dataset}{Vision meets robotics: the KITTI dataset}},
+            title = {Vision meets robotics: the KITTI dataset},
             volume = {32},
             journal = {The International Journal of Robotics Research},
             doi = {10.1177/0278364913491297}
@@ -106,7 +106,7 @@ def download_kitti_ground_truth_poses(work_path: str = os.getcwd()):
     )
 
 
-def download_kitti_calibration(work_path: str = os.getcwd()):
+def download_kitti_calibration(work_path: str = os.getcwd()) -> None:
     """Downloads the KITTI odometry calibration data into a specified directory.
 
     Args:
@@ -120,7 +120,7 @@ def download_kitti_calibration(work_path: str = os.getcwd()):
             year = {2013},
             month = {09},
             pages = {1231-1237},
-            title = {\href{https://www.researchgate.net/publication/258140919_Vision_meets_robotics_the_KITTI_dataset}{Vision meets robotics: the KITTI dataset}},
+            title = {Vision meets robotics: the KITTI dataset},
             volume = {32},
             journal = {The International Journal of Robotics Research},
             doi = {10.1177/0278364913491297}
@@ -139,7 +139,7 @@ def download_kitti_calibration(work_path: str = os.getcwd()):
     )
 
 
-def download_kitti_odometry_gray(work_path: str = os.getcwd()):
+def download_kitti_odometry_gray(work_path: str = os.getcwd()) -> None:
     """Downloads the KITTI odometry dataset (grayscale images) into a specified directory.
 
     Args:
@@ -153,7 +153,7 @@ def download_kitti_odometry_gray(work_path: str = os.getcwd()):
             year = {2013},
             month = {09},
             pages = {1231-1237},
-            title = {\href{https://www.researchgate.net/publication/258140919_Vision_meets_robotics_the_KITTI_dataset}{Vision meets robotics: the KITTI dataset}},
+            title = {Vision meets robotics: the KITTI dataset},
             volume = {32},
             journal = {The International Journal of Robotics Research},
             doi = {10.1177/0278364913491297}
@@ -172,7 +172,7 @@ def download_kitti_odometry_gray(work_path: str = os.getcwd()):
     )
 
 
-def download_kitti_odometry_color(work_path: str = os.getcwd()):
+def download_kitti_odometry_color(work_path: str = os.getcwd()) -> None:
     """Downloads the KITTI odometry dataset (color images) into a specified directory.
 
     Args:
